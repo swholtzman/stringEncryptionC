@@ -8,6 +8,11 @@ int isLetter(char ch)
 }
 
 char shiftLetter(char ch, int shift) {
+
+    if (shift < 0) {
+        shift = shift % 26 + 26;
+    }
+
     int asciiVal = (int)ch;
     int caseOffset = (isupper(ch) ? 'A' : 'a');
 
@@ -72,7 +77,7 @@ int main()
     const char *inputFile = "input.txt";
     const char *outputFile = "output.txt";
 
-    int shiftNum = 3;
+    int shiftNum = -26;
 
     encrypt_text(inputFile, outputFile, shiftNum);
 
